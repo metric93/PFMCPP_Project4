@@ -55,27 +55,27 @@ struct FloatType
 
 float FloatType::add ( float lhs, float rhs)
 {
-    return ( lhs + rhs);
+    return lhs + rhs;
 }
 
 float FloatType::subtract ( float lhs, float rhs)
 {
-    return ( lhs - rhs);
+    return lhs - rhs;
 }
 
 float FloatType::multiply ( float lhs, float rhs)
 {
-    return ( lhs * rhs);
+    return lhs * rhs;
 }
 
 float FloatType::divide ( float lhs, float rhs)
 {
     if (rhs > 0.f) 
     {
-        return ( lhs / rhs); 
+        return lhs / rhs; 
     }
     std::cout << "Watch out! Float Divison by 0." << std::endl;
-    return ( lhs / rhs);
+    return lhs / rhs;
 }
 
 
@@ -89,22 +89,22 @@ struct DoubleType
 
 double DoubleType::add ( double lhs, double rhs)
 {
-    return ( lhs + rhs);
+    return lhs + rhs;
 }
 
 double DoubleType::subtract ( double lhs, double rhs)
 {
-    return ( lhs - rhs);
+    return lhs - rhs;
 }
 
 double DoubleType::multiply ( double lhs, double rhs)
 {
-    return ( lhs * rhs);
+    return lhs * rhs;
 }
 
 double DoubleType::divide ( double lhs, double rhs)
 {
-    return ( lhs / rhs);
+    return lhs / rhs;
 }
 
 
@@ -118,23 +118,23 @@ struct IntType
 
 int IntType::add ( int lhs, int rhs)
 {
-    return ( lhs + rhs);
+    return lhs + rhs;
 }
 
 int IntType::subtract ( int lhs, int rhs)
 {
-    return ( lhs - rhs);
+    return lhs - rhs;
 }
 
 int IntType::multiply ( int lhs, int rhs)
 {
-    return ( lhs * rhs);
+    return lhs * rhs;
 }
 
 int IntType::divide ( int lhs, int rhs)
 {
     if (rhs == 0){std::cout << "Invalid Expression!" << std::endl; return lhs;}
-    return ( lhs / rhs);
+    return lhs / rhs;
 }
 
 
