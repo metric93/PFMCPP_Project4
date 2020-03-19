@@ -38,7 +38,7 @@ Make a pull request after you make your first commit and pin the pull request li
 
 send me a DM to check your pull request
 
- Wait for my code review.
+ Wait for my code review..
  */
 
 #include <iostream>
