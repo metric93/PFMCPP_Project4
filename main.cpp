@@ -70,7 +70,7 @@ float FloatType::multiply ( float lhs, float rhs)
 
 float FloatType::divide ( float lhs, float rhs)
 {
-    if (rhs > 0.f) 
+    if (std::abs(rhs) > 0.f) 
     {
         return lhs / rhs; 
     }
@@ -104,6 +104,11 @@ double DoubleType::multiply ( double lhs, double rhs)
 
 double DoubleType::divide ( double lhs, double rhs)
 {
+    if (std::abs(rhs) > 0.) 
+    {
+        return lhs / rhs; 
+    }
+    std::cout << "Watch out! Float Divison by 0." << std::endl;
     return lhs / rhs;
 }
 
@@ -133,7 +138,10 @@ int IntType::multiply ( int lhs, int rhs)
 
 int IntType::divide ( int lhs, int rhs)
 {
-    if (rhs == 0){std::cout << "Invalid Expression!" << std::endl; return lhs;}
+    if (rhs == 0)
+    {
+        std::cout << "Invalid Expression!" << std::endl; return lhs;
+    }
     return lhs / rhs;
 }
 
@@ -149,26 +157,33 @@ int main()
     IntType it;
     DoubleType db;
 
-    auto result = ft.add (3.2f, 23.f );
-    std::cout <<"result of ft.add(): " << result << std::endl;
+    float ftresult;
+    int itresult;
+    double dbresult;
 
-    result = ft.subtract( 250.f, 0.1f );
-    std::cout <<"result of ft.subtract(): " << result << std::endl;
+    ftresult = ft.add (3.2f, 23.f );
+    std::cout <<"result of ft.add(): " << ftresult << std::endl;
 
-    result = ft.divide( 15.5254f, 0.f );
-    std::cout <<"result of ft.divide(): " << result << std::endl;
+    ftresult = ft.subtract( 250.f, 0.1f );
+    std::cout <<"result of ft.subtract(): " << ftresult << std::endl;
 
-    result = ft.divide( 15.5254f, 12.f );
-    std::cout <<"result of ft.divide(): " << result << std::endl;
+    ftresult = ft.divide( 15.5254f, 0.f );
+    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
 
-    result = it.divide( 15, 0);
-    std::cout <<"result of it.divide(): " << result << std::endl;
+    ftresult = ft.divide( 15.5254f, 12.f );
+    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
 
-    result = db.divide( 15.25, 0.00);
-    std::cout <<"result of db.divide(): " << result << std::endl;
+    ftresult = ft.divide( 15.5254f, -12.f );
+    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
 
-    result = db.divide( 15.35, 4.11);
-    std::cout <<"result of db.divide(): " << result << std::endl;
+    itresult = it.divide( 15, 0);
+    std::cout <<"result of it.divide(): " << itresult << std::endl;
+
+    dbresult = db.divide( 15.25, 0.00);
+    std::cout <<"result of db.divide(): " << dbresult << std::endl;
+
+    dbresult = db.divide( 15.35, -2.54535);
+    std::cout <<"result of db.divide(): " << dbresult << std::endl;
 
 
     std::cout << "good to go!" << std::endl;
