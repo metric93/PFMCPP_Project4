@@ -104,7 +104,7 @@ double DoubleType::multiply ( double lhs, double rhs)
 
 double DoubleType::divide ( double lhs, double rhs)
 {
-    if (std::abs(rhs) > 0.) 
+    if (std::abs(rhs) > 0.)
     {
         return lhs / rhs; 
     }
@@ -140,7 +140,8 @@ int IntType::divide ( int lhs, int rhs)
 {
     if (rhs == 0)
     {
-        std::cout << "Invalid Expression!" << std::endl; return lhs;
+        std::cout << "Invalid Expression!  Can't divide integers by 0!!" << std::endl; 
+        return lhs;
     }
     return lhs / rhs;
 }
@@ -157,33 +158,33 @@ int main()
     IntType it;
     DoubleType db;
 
-    float ftresult;
-    int itresult;
-    double dbresult;
+    float ftResult;
+    int itResult;
+    double dbResult;
 
-    ftresult = ft.add (3.2f, 23.f );
-    std::cout <<"result of ft.add(): " << ftresult << std::endl;
+    ftResult = ft.add (3.2f, 23.f );
+    std::cout <<"result of ft.add(): " << ftResult << std::endl;
 
-    ftresult = ft.subtract( 250.f, 0.1f );
-    std::cout <<"result of ft.subtract(): " << ftresult << std::endl;
+    ftResult = ft.subtract( 250.f, 0.1f );
+    std::cout <<"result of ft.subtract(): " << ftResult << std::endl;
 
-    ftresult = ft.divide( 15.5254f, 0.f );
-    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
+    ftResult = ft.divide( 15.5254f, 0.f );
+    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
-    ftresult = ft.divide( 15.5254f, 12.f );
-    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
+    ftResult = ft.divide( 15.5254f, 12.f );
+    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
-    ftresult = ft.divide( 15.5254f, -12.f );
-    std::cout <<"result of ft.divide(): " << ftresult << std::endl;
+    ftResult = ft.divide( 15.5254f, -12.f );
+    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
-    itresult = it.divide( 15, 0);
-    std::cout <<"result of it.divide(): " << itresult << std::endl;
+    itResult = it.divide( 15, 0);
+    std::cout <<"result of it.divide(): " << itResult << std::endl;
 
-    dbresult = db.divide( 15.25, 0.00);
-    std::cout <<"result of db.divide(): " << dbresult << std::endl;
+    dbResult = db.divide( 15.25, 0.00);
+    std::cout <<"result of db.divide(): " << dbResult << std::endl;
 
-    dbresult = db.divide( 15.35, -2.54535);
-    std::cout <<"result of db.divide(): " << dbresult << std::endl;
+    dbResult = db.divide( 15.35, -2.54535);
+    std::cout <<"result of db.divide(): " << dbResult << std::endl;
 
 
     std::cout << "good to go!" << std::endl;
