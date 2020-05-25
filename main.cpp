@@ -85,7 +85,7 @@ struct FloatType
 {
     float* pointerFloat;
 
-    FloatType() : pointerFloat(new float()){}
+    FloatType(float value) : pointerFloat(new float(value)){}
     ~FloatType()
     {
         delete pointerFloat;
@@ -128,7 +128,7 @@ struct DoubleType
 {
     double* pointerDouble;
 
-    DoubleType() : pointerDouble(new double()){}
+    DoubleType(double value) : pointerDouble(new double(value)){}
 
     ~DoubleType() 
     {
@@ -172,7 +172,7 @@ struct IntType
 {
     int* pointerInt;
 
-    IntType() : pointerInt(new int()){}
+    IntType(int value) : pointerInt(new int(value)){}
 
     ~IntType() 
     {
@@ -220,9 +220,9 @@ int IntType::divide ( int lhs, int rhs)
 
 int main()
 {
-    FloatType ft;
-    IntType it;
-    DoubleType db;
+    FloatType ft (5.5f);
+    IntType it (5);
+    DoubleType db (5.523);
 
     float ftResult;
     int itResult;
