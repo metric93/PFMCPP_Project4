@@ -14,13 +14,24 @@ New/This/Pointers/References conclusion
          on the heap without leaking, without using smart pointers. 
  */
 
+struct A {};
 
+struct HeapA
+{
+    //Pointer of Type A
+    A* pointerA;
 
+    //Creating an object of Type A on the heap with the new Keyword
+    HeapA() : pointerA( new A()){}
 
+    //Removing the Object and setting the Pointer to nullptr
+    ~HeapA()
+    {
+        delete pointerA;
+        pointerA = nullptr;
+    }
 
-
-
-
+};
 
 
 
