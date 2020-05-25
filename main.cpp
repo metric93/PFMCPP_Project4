@@ -92,35 +92,39 @@ struct FloatType
         pointerFloat = nullptr;
     }
 
-    float add( float lhs, float rhs );
-    float subtract( float lhs, float rhs );
-    float multiply( float lhs, float rhs );
-    float divide( float lhs, float rhs );
+    FloatType& add( float rhs );
+    FloatType& subtract( float rhs );
+    FloatType& multiply( float rhs );
+    FloatType& divide(  float rhs );
 };
 
-float FloatType::add ( float lhs, float rhs)
+FloatType& FloatType::add (float rhs)
 {
-    return lhs + rhs;
+    *pointerFloat += rhs;
+    return *this;
 }
 
-float FloatType::subtract ( float lhs, float rhs)
+FloatType& FloatType::subtract (float rhs)
 {
-    return lhs - rhs;
+    *pointerFloat -= rhs;
+    return *this;
 }
 
-float FloatType::multiply ( float lhs, float rhs)
+FloatType& FloatType::multiply ( float rhs)
 {
-    return lhs * rhs;
+    *pointerFloat = *pointerFloat * rhs;
+    return *this;
 }
 
-float FloatType::divide ( float lhs, float rhs)
+FloatType& FloatType::divide ( float rhs)
 {
     if (std::abs(rhs) > 0.f) 
     {
-        return lhs / rhs; 
+        *pointerFloat = *pointerFloat / rhs;
+        return *this; 
     }
     std::cout << "Watch out! Float Divison by 0." << std::endl;
-    return lhs / rhs;
+    return *this;
 }
 
 
@@ -136,35 +140,39 @@ struct DoubleType
         pointerDouble = nullptr;
     }
 
-    double add( double lhs, double rhs );
-    double subtract( double lhs, double rhs );
-    double multiply( double lhs, double rhs );
-    double divide( double lhs, double rhs );
+    DoubleType& add( double rhs );
+    DoubleType& subtract( double rhs );
+    DoubleType& multiply( double rhs );
+    DoubleType& divide( double rhs );
 };
 
-double DoubleType::add ( double lhs, double rhs)
+DoubleType& DoubleType::add ( double rhs)
 {
-    return lhs + rhs;
+    *pointerDouble += rhs;
+    return *this;
 }
 
-double DoubleType::subtract ( double lhs, double rhs)
+DoubleType& DoubleType::subtract ( double rhs)
 {
-    return lhs - rhs;
+    *pointerDouble -= rhs;
+    return *this;
 }
 
-double DoubleType::multiply ( double lhs, double rhs)
+DoubleType& DoubleType::multiply (  double rhs)
 {
-    return lhs * rhs;
+    *pointerDouble = *pointerDouble * rhs;
+    return *this;
 }
 
-double DoubleType::divide ( double lhs, double rhs)
+DoubleType& DoubleType::divide ( double rhs)
 {
     if (std::abs(rhs) > 0.)
     {
-        return lhs / rhs; 
+        *pointerDouble = *pointerDouble / rhs;
+        return *this; 
     }
     std::cout << "Watch out! Float Divison by 0." << std::endl;
-    return lhs / rhs;
+    return *this;
 }
 
 
@@ -181,35 +189,39 @@ struct IntType
     }
 
 
-    int add( int lhs, int rhs );
-    int subtract( int lhs, int rhs );
-    int multiply( int lhs, int rhs );
-    int divide( int lhs, int rhs );
+    IntType& add( int rhs );
+    IntType& subtract( int rhs );
+    IntType& multiply( int rhs );
+    IntType& divide( int rhs );
 };
 
-int IntType::add ( int lhs, int rhs)
+IntType& IntType::add ( int rhs)
 {
-    return lhs + rhs;
+    *pointerInt += rhs;
+    return *this;
 }
 
-int IntType::subtract ( int lhs, int rhs)
+IntType& IntType::subtract ( int rhs)
 {
-    return lhs - rhs;
+    *pointerInt -= rhs;
+    return *this;
 }
 
-int IntType::multiply ( int lhs, int rhs)
+IntType& IntType::multiply ( int rhs)
 {
-    return lhs * rhs;
+    *pointerInt = *pointerInt * rhs;
+    return *this;
 }
 
-int IntType::divide ( int lhs, int rhs)
+IntType& IntType::divide ( int rhs)
 {
     if (rhs == 0)
     {
         std::cout << "Invalid Expression!  Can't divide integers by 0!!" << std::endl; 
-        return lhs;
+        return *this;
     }
-    return lhs / rhs;
+    *pointerInt = *pointerInt / rhs;
+    return *this;
 }
 
 
@@ -224,23 +236,23 @@ int main()
     IntType it (5);
     DoubleType db (5.523);
 
-    float ftResult;
-    int itResult;
-    double dbResult;
-
-    ftResult = ft.add (3.2f, 23.f );
+    //float ftResult;
+    //int itResult;
+    //double dbResult;
+    /*
+    ftResult = ft.add (23.f );
     std::cout <<"result of ft.add(): " << ftResult << std::endl;
 
-    ftResult = ft.subtract( 250.f, 0.1f );
+    ftResult = ft.subtract( 0.1f );
     std::cout <<"result of ft.subtract(): " << ftResult << std::endl;
 
-    ftResult = ft.divide( 15.5254f, 0.f );
+    ftResult = ft.divide( 0.f );
     std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
-    ftResult = ft.divide( 15.5254f, 12.f );
+    ftResult = ft.divide( 1 12.f );
     std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
-    ftResult = ft.divide( 15.5254f, -12.f );
+    ftResult = ft.divide(  -12.f );
     std::cout <<"result of ft.divide(): " << ftResult << std::endl;
 
     itResult = it.divide( 15, 0);
@@ -251,7 +263,7 @@ int main()
 
     dbResult = db.divide( 15.35, -2.54535);
     std::cout <<"result of db.divide(): " << dbResult << std::endl;
-
+    */
 
     std::cout << "good to go!" << std::endl;
 }
