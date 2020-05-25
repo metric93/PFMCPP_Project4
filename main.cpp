@@ -34,7 +34,6 @@ struct HeapA
 };
 
 
-
  /*
  1) Edit your 3 structs so that they own a heap-allocated primitive type without using smart pointers  
          IntType should own a heap-allocated int, for example.
@@ -84,6 +83,15 @@ send me a DM to check your pull request
 
 struct FloatType
 {
+    float* pointerFloat;
+
+    FloatType() : pointerFloat(new float()){}
+    ~FloatType()
+    {
+        delete pointerFloat;
+        pointerFloat = nullptr;
+    }
+
     float add( float lhs, float rhs );
     float subtract( float lhs, float rhs );
     float multiply( float lhs, float rhs );
@@ -118,6 +126,16 @@ float FloatType::divide ( float lhs, float rhs)
 
 struct DoubleType
 {
+    double* pointerDouble;
+
+    DoubleType() : pointerDouble(new double()){}
+
+    ~DoubleType() 
+    {
+        delete pointerDouble;
+        pointerDouble = nullptr;
+    }
+
     double add( double lhs, double rhs );
     double subtract( double lhs, double rhs );
     double multiply( double lhs, double rhs );
@@ -152,6 +170,17 @@ double DoubleType::divide ( double lhs, double rhs)
 
 struct IntType
 {
+    int* pointerInt;
+
+    IntType() : pointerInt(new int()){}
+
+    ~IntType() 
+    {
+        delete pointerInt;
+        pointerInt = nullptr;
+    }
+
+
     int add( int lhs, int rhs );
     int subtract( int lhs, int rhs );
     int multiply( int lhs, int rhs );
