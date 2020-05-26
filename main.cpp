@@ -80,7 +80,6 @@ send me a DM to check your pull request
 #include <iostream>
 
 
-
 struct FloatType
 {
     float* pointerFloat;
@@ -96,6 +95,8 @@ struct FloatType
     FloatType& subtract( float rhs );
     FloatType& multiply( float rhs );
     FloatType& divide(  float rhs );
+
+    FloatType& add( FloatType& udt);
 };
 
 FloatType& FloatType::add (float rhs)
@@ -125,6 +126,11 @@ FloatType& FloatType::divide ( float rhs)
     }
     std::cout << "Watch out! Float Divison by 0." << std::endl;
     return *this;
+}
+
+FloatType& FloatType::add (FloatType& udt)
+{
+    return add(*udt.pointerFloat);
 }
 
 
