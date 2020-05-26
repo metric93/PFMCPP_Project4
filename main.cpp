@@ -79,6 +79,8 @@ send me a DM to check your pull request
 
 #include <iostream>
 
+struct IntType;
+struct DoubleType;
 
 struct FloatType
 {
@@ -97,8 +99,107 @@ struct FloatType
     FloatType& divide(  float rhs );
 
     FloatType& add( FloatType& udt);
+    FloatType& subtract( FloatType& udt);
+    FloatType& multiply( FloatType& udt);
+    FloatType& divide( FloatType& udt);
+
+    FloatType& add( IntType& udt);
+    FloatType& subtract( IntType& udt);
+    FloatType& multiply( IntType& udt);
+    FloatType& divide( IntType& udt);
+
+    FloatType& add( DoubleType& udt);
+    FloatType& subtract( DoubleType& udt);
+    FloatType& multiply( DoubleType& udt);
+    FloatType& divide( DoubleType& udt);
 };
 
+
+
+
+struct DoubleType
+{
+    double* pointerDouble;
+
+    DoubleType(double value) : pointerDouble(new double(value)){}
+
+    ~DoubleType() 
+    {
+        delete pointerDouble;
+        pointerDouble = nullptr;
+    }
+
+    DoubleType& add( double rhs );
+    DoubleType& subtract( double rhs );
+    DoubleType& multiply( double rhs );
+    DoubleType& divide( double rhs );
+
+    DoubleType& add( DoubleType& udt);
+    DoubleType& subtract( DoubleType& udt);
+    DoubleType& multiply( DoubleType& udt);
+    DoubleType& divide( DoubleType& udt);
+
+    DoubleType& add( IntType& udt);
+    DoubleType& subtract( IntType& udt);
+    DoubleType& multiply( IntType& udt);
+    DoubleType& divide( IntType& udt);
+
+    DoubleType& add( FloatType& udt);
+    DoubleType& subtract( FloatType& udt);
+    DoubleType& multiply( FloatType& udt);
+    DoubleType& divide( FloatType& udt);
+};
+
+
+
+
+struct IntType
+{
+    int* pointerInt;
+
+    IntType(int value) : pointerInt(new int(value)){}
+
+    ~IntType() 
+    {
+        delete pointerInt;
+        pointerInt = nullptr;
+    }
+
+
+    IntType& add( int rhs );
+    IntType& subtract( int rhs );
+    IntType& multiply( int rhs );
+    IntType& divide( int rhs );
+
+    IntType& add(IntType& udt);
+    IntType& subtract(IntType& udt);
+    IntType& multiply(IntType& udt);
+    IntType& divide(IntType& udt);
+
+    IntType& add(DoubleType& udt);
+    IntType& subtract(DoubleType& udt);
+    IntType& multiply(DoubleType& udt);
+    IntType& divide(DoubleType& udt);
+
+    IntType& add(FloatType& udt);
+    IntType& subtract(FloatType& udt);
+    IntType& multiply(FloatType& udt);
+    IntType& divide(FloatType& udt);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+/*Float Type Definitions*/
+/**/
 FloatType& FloatType::add (float rhs)
 {
     *pointerFloat += rhs;
@@ -128,30 +229,74 @@ FloatType& FloatType::divide ( float rhs)
     return *this;
 }
 
+
+/**/
 FloatType& FloatType::add (FloatType& udt)
 {
     return add(*udt.pointerFloat);
 }
 
-
-struct DoubleType
+FloatType& FloatType::subtract (FloatType& udt)
 {
-    double* pointerDouble;
+    return subtract(*udt.pointerFloat);
+}
 
-    DoubleType(double value) : pointerDouble(new double(value)){}
+FloatType& FloatType::multiply (FloatType& udt)
+{
+    return multiply(*udt.pointerFloat);
+}
 
-    ~DoubleType() 
-    {
-        delete pointerDouble;
-        pointerDouble = nullptr;
-    }
+FloatType& FloatType::divide (FloatType& udt)
+{
+    return divide(*udt.pointerFloat);
+}
 
-    DoubleType& add( double rhs );
-    DoubleType& subtract( double rhs );
-    DoubleType& multiply( double rhs );
-    DoubleType& divide( double rhs );
-};
+/**/
+FloatType& FloatType::add (IntType& udt)
+{
+    return add(*udt.pointerInt);
+}
 
+FloatType& FloatType::subtract (IntType& udt)
+{
+    return subtract(*udt.pointerInt);
+}
+
+FloatType& FloatType::multiply (IntType& udt)
+{
+    return multiply(*udt.pointerInt);
+}
+
+FloatType& FloatType::divide (IntType& udt)
+{
+    return divide(*udt.pointerInt);
+}
+
+/**/
+FloatType& FloatType::add (DoubleType& udt)
+{
+    return add(*udt.pointerDouble);
+}
+
+FloatType& FloatType::subtract (DoubleType& udt)
+{
+    return subtract(*udt.pointerDouble);
+}
+
+FloatType& FloatType::multiply (DoubleType& udt)
+{
+    return multiply(*udt.pointerDouble);
+}
+
+FloatType& FloatType::divide (DoubleType& udt)
+{
+    return divide(*udt.pointerDouble);
+}
+
+
+
+/*Double type Definitions*/
+/**/
 DoubleType& DoubleType::add ( double rhs)
 {
     *pointerDouble += rhs;
@@ -181,26 +326,76 @@ DoubleType& DoubleType::divide ( double rhs)
     return *this;
 }
 
-
-struct IntType
+/**/
+DoubleType& DoubleType::add(DoubleType& udt)
 {
-    int* pointerInt;
+    return add(*udt.pointerDouble);
+}
 
-    IntType(int value) : pointerInt(new int(value)){}
+DoubleType& DoubleType::subtract(DoubleType& udt)
+{
+    return subtract(*udt.pointerDouble);
+}
 
-    ~IntType() 
-    {
-        delete pointerInt;
-        pointerInt = nullptr;
-    }
+DoubleType& DoubleType::multiply (DoubleType& udt)
+{
+    return multiply(*udt.pointerDouble);
+}
+
+DoubleType& DoubleType::divide (DoubleType& udt)
+{
+    return divide(*udt.pointerDouble);
+}
+
+/**/
+DoubleType& DoubleType::add(IntType& udt)
+{
+    return add(*udt.pointerInt);
+}
+
+DoubleType& DoubleType::subtract(IntType& udt)
+{
+    return subtract(*udt.pointerInt);
+}
+
+DoubleType& DoubleType::multiply (IntType& udt)
+{
+    return multiply(*udt.pointerInt);
+}
+
+DoubleType& DoubleType::divide (IntType& udt)
+{
+    return divide(*udt.pointerInt);
+}
+
+/**/
+DoubleType& DoubleType::add(FloatType& udt)
+{
+    return add(*udt.pointerFloat);
+}
+
+DoubleType& DoubleType::subtract(FloatType& udt)
+{
+    return subtract(*udt.pointerFloat);
+}
+
+DoubleType& DoubleType::multiply (FloatType& udt)
+{
+    return multiply(*udt.pointerFloat);
+}
+
+DoubleType& DoubleType::divide (FloatType& udt)
+{
+    return divide(*udt.pointerFloat);
+}
 
 
-    IntType& add( int rhs );
-    IntType& subtract( int rhs );
-    IntType& multiply( int rhs );
-    IntType& divide( int rhs );
-};
 
+
+
+
+/*IntType Definitions*/
+/**/
 IntType& IntType::add ( int rhs)
 {
     *pointerInt += rhs;
@@ -231,10 +426,70 @@ IntType& IntType::divide ( int rhs)
 }
 
 
+/**/
+IntType& IntType::add (IntType& udt)
+{
+    return add(*udt.pointerInt);
+}
+
+IntType& IntType::subtract(IntType& udt)
+{
+    return subtract(*udt.pointerInt);
+}
+
+IntType& IntType::divide(IntType& udt)
+{
+    return divide(*udt.pointerInt);
+}
+
+IntType& IntType::multiply(IntType& udt)
+{
+    return multiply(*udt.pointerInt);
+}
 
 
+/**/
+IntType& IntType::add (FloatType& udt)
+{
+    return add(*udt.pointerFloat);
+}
+
+IntType& IntType::subtract(FloatType& udt)
+{
+    return subtract(*udt.pointerFloat);
+}
+
+IntType& IntType::divide(FloatType& udt)
+{
+    return divide(*udt.pointerFloat);
+}
+
+IntType& IntType::multiply(FloatType& udt)
+{
+    return multiply(*udt.pointerFloat);
+}
 
 
+/**/
+IntType& IntType::add (DoubleType& udt)
+{
+    return add(*udt.pointerDouble);
+}
+
+IntType& IntType::subtract(DoubleType& udt)
+{
+    return subtract(*udt.pointerDouble);
+}
+
+IntType& IntType::divide(DoubleType& udt)
+{
+    return divide(*udt.pointerDouble);
+}
+
+IntType& IntType::multiply(DoubleType& udt)
+{
+    return multiply(*udt.pointerDouble);
+}
 
 int main()
 {
