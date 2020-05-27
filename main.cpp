@@ -35,7 +35,7 @@ struct HeapA
 
 
  /*
- 1) Edit your 3 structs so that they own a heap-allocated primitive type without using smart pointers  
+ 1) Edit your 3 structs so that they own a heap-allocated primitive type without using smart pointers named 'value'
          IntType should own a heap-allocated int, for example.
  
  2) give it a constructor that takes the appropriate primitive
@@ -63,15 +63,9 @@ struct HeapA
  
  6) Don't let your heap-allocated owned type leak!
  
- 7) click the [run] button.  Clear up any errors or warnings as best you can.
- 
- Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
-Make a pull request after you make your first commit and pin the pull request link to our DM thread.
+ 7) replace main() with the main() below
 
-send me a DM to check your pull request
-
- Wait for my code review.
+ 8) click the [run] button.  Clear up any errors or warnings as best you can.
  */
 
 
@@ -491,40 +485,121 @@ IntType& IntType::multiply(DoubleType& udt)
     return multiply(*udt.pointerDouble);
 }
 
+/*
+ MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
+
+ Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
+ 
+ If you didn't already: 
+    Make a pull request after you make your first commit
+    pin the pull request link and this repl.it link to our DM thread in a single message.
+
+ send me a DM to review your pull request when the project is ready for review.
+
+ Wait for my code review.
+ */
+
 int main()
-{
-    FloatType ft (5.5f);
-    IntType it (5);
-    DoubleType db (5.523);
+{   
+    //testing instruction 0
+    HeapA heapA; 
 
-    //float ftResult;
-    //int itResult;
-    //double dbResult;
-    /*
-    ftResult = ft.add (23.f );
-    std::cout <<"result of ft.add(): " << ftResult << std::endl;
+    //assign heap primitives
+    FloatType ft ( 2.0f );
+    DoubleType dt ( 2 );
+    IntType it ( 2 ) ;
 
-    ftResult = ft.subtract( 0.1f );
-    std::cout <<"result of ft.subtract(): " << ftResult << std::endl;
+    std::cout << "FloatType add result=" << ft.add( 2.0f ).value << std::endl;
+    std::cout << "FloatType subtract result=" << ft.subtract( 2.0f ).value << std::endl;
+    std::cout << "FloatType multiply result=" << ft.multiply( 2.0f ).value << std::endl;
+    std::cout << "FloatType divide result=" << ft.divide( 16.0f).value << std::endl << std::endl;
 
-    ftResult = ft.divide( 0.f );
-    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
+    std::cout << "DoubleType add result=" << dt.add(2.0).value << std::endl;
+    std::cout << "DoubleType subtract result=" << dt.subtract(2.0).value << std::endl;
+    std::cout << "DoubleType multiply result=" << dt.multiply(2.0).value << std::endl;
+    std::cout << "DoubleType divide result=" << dt.divide(5.f).value << std::endl << std::endl;
 
-    ftResult = ft.divide( 1 12.f );
-    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
+    std::cout << "IntType add result=" << it.add(2).value << std::endl;
+    std::cout << "IntType subtract result=" << it.subtract(2).value << std::endl;
+    std::cout << "IntType multiply result=" << it.multiply(2).value << std::endl;
+    std::cout << "IntType divide result=" << it.divide(3).value << std::endl << std::endl;
+    std::cout << "Chain calculation = " << (it.multiply(1000).divide(2).subtract(10).add(100)).value << std::endl;
 
-    ftResult = ft.divide(  -12.f );
-    std::cout <<"result of ft.divide(): " << ftResult << std::endl;
+        // FloatType object instanciation and method tests
+    // --------
+    std::cout << "New value of ft = (ft + 3.0f) * 1.5f / 5.0f = " << ft.add( 3.0f ).multiply(1.5f).divide(5.0f).value << std::endl;
+       
+    std::cout << "---------------------\n" << std::endl; 
+    
+    // DoubleType/IntType object instanciation and method tests
+    // --------
+    std::cout << "Initial value of dt: " << dt.value << std::endl;
+    std::cout << "Initial value of it: " << it.value << std::endl;
+    // --------
+    std::cout << "Use of function concatenation (mixed type arguments) " << std::endl;
+    std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << dt.multiply(it.value).divide(5.0f).add(ft.value).value << std::endl;
 
-    itResult = it.divide( 15, 0);
-    std::cout <<"result of it.divide(): " << itResult << std::endl;
+    std::cout << "---------------------\n" << std::endl; 
+    
+    // Intercept division by 0
+    // --------
+    std::cout << "Intercept division by 0 " << std::endl;
+    std::cout << "New value of it = it / 0 = " << it.divide(0).value << std::endl;
+    std::cout << "New value of ft = ft / 0 = " << ft.divide(0).value << std::endl;
+    std::cout << "New value of dt = dt / 0 = " << dt.divide(0).value << std::endl;
 
-    dbResult = db.divide( 15.25, 0.00);
-    std::cout <<"result of db.divide(): " << dbResult << std::endl;
+    std::cout << "---------------------\n" << std::endl; 
 
-    dbResult = db.divide( 15.35, -2.54535);
-    std::cout <<"result of db.divide(): " << dbResult << std::endl;
-    */
+    std::cout << "good to go!\n";
 
-    std::cout << "good to go!" << std::endl;
+    return 0;
 }
+
+/*
+your program should generate the following output.  
+
+3 warnings generated.
+FloatType add result=4
+FloatType subtract result=2
+FloatType multiply result=4
+FloatType divide result=0.25
+
+DoubleType add result=4
+DoubleType subtract result=2
+DoubleType multiply result=4
+DoubleType divide result=0.8
+
+IntType add result=4
+IntType subtract result=2
+IntType multiply result=4
+IntType divide result=1
+
+Chain calculation = 590
+New value of ft = (ft + 3.0f) * 1.5f / 5.0f = 0.975
+---------------------
+
+Initial value of dt: 0.8
+Initial value of it: 590
+Use of function concatenation (mixed type arguments) 
+New value of dt = (dt * it) / 5.0f + ft = 95.375
+---------------------
+
+Intercept division by 0 
+New value of it = it / 0 = error: integer division by zero is an error and will crash the pro
+gram!
+590
+New value of ft = ft / 0 = warning: floating point division by zero!
+inf
+New value of dt = dt / 0 = warning: floating point division by zero!
+inf
+---------------------
+
+good to go!
+
+
+
+Use a service like https://www.diffchecker.com/diff to compare your output. 
+you will have 3 conversion warnings at the top of your output.  
+you'll learn to solve them in the next project part.
+
+*/
