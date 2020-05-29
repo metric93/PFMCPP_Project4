@@ -215,12 +215,11 @@ FloatType& FloatType::multiply ( float rhs)
 
 FloatType& FloatType::divide ( float rhs)
 {
-    if (std::abs(rhs) > 0.f) 
+    if  (std::abs(rhs) == 0) 
     {
-        *value = *value / rhs;
-        return *this; 
-    }
-    std::cout << "Watch out! Float Divison by 0." << std::endl;
+        std::cout << "warning: floating point division by zero!" << std::endl;
+    }  
+    *value = *value / rhs;
     return *this;
 }
 
@@ -312,12 +311,11 @@ DoubleType& DoubleType::multiply (  double rhs)
 
 DoubleType& DoubleType::divide ( double rhs)
 {
-    if (std::abs(rhs) > 0.)
+    if (std::abs(rhs) == 0.)
     {
-        *value = *value / rhs;
-        return *this; 
-    }
-    std::cout << "Watch out! Float Divison by 0." << std::endl;
+        std::cout << "warning: floating point division by zero!"<< std::endl;
+    } 
+    *value = *value / rhs;
     return *this;
 }
 
@@ -413,10 +411,12 @@ IntType& IntType::divide ( int rhs)
 {
     if (rhs == 0)
     {
-        std::cout << "Invalid Expression!  Can't divide integers by 0!!" << std::endl; 
-        return *this;
+        std::cout << "error: integer division by zero is an error and will crash the program!" << std::endl; 
     }
-    *value = *value / rhs;
+    else
+    {
+        *value = *value / rhs;
+    }  
     return *this;
 }
 
@@ -543,6 +543,7 @@ int main()
     // --------
     std::cout << "Use of function concatenation (mixed type arguments) " << std::endl;
     std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << *dt.multiply(*it.value).divide(5.0f).add(*ft.value).value << std::endl;
+
 
     std::cout << "---------------------\n" << std::endl; 
     
