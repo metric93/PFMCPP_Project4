@@ -215,7 +215,7 @@ FloatType& FloatType::multiply ( float rhs)
 
 FloatType& FloatType::divide ( float rhs)
 {
-    if  (std::abs(rhs) == 0) 
+    if  (std::abs(rhs) > 0) 
     {
         std::cout << "warning: floating point division by zero!" << std::endl;
     }  
@@ -269,22 +269,22 @@ FloatType& FloatType::divide (IntType& udt)
 /**/
 FloatType& FloatType::add (DoubleType& udt)
 {
-    return add(*udt.value);
+    return add(static_cast<float>(*udt.value));
 }
 
 FloatType& FloatType::subtract (DoubleType& udt)
 {
-    return subtract(*udt.value);
+    return subtract(static_cast<float>(*udt.value));
 }
 
 FloatType& FloatType::multiply (DoubleType& udt)
 {
-    return multiply(*udt.value);
+    return multiply(static_cast<float>(*udt.value));
 }
 
 FloatType& FloatType::divide (DoubleType& udt)
 {
-    return divide(*udt.value);
+    return divide(static_cast<float>(*udt.value));
 }
 
 
@@ -364,22 +364,22 @@ DoubleType& DoubleType::divide (IntType& udt)
 /**/
 DoubleType& DoubleType::add(FloatType& udt)
 {
-    return add(*udt.value);
+    return add(static_cast<double>(*udt.value));
 }
 
 DoubleType& DoubleType::subtract(FloatType& udt)
 {
-    return subtract(*udt.value);
+    return subtract(static_cast<double>(*udt.value));
 }
 
 DoubleType& DoubleType::multiply (FloatType& udt)
 {
-    return multiply(*udt.value);
+    return multiply(static_cast<double>(*udt.value));
 }
 
 DoubleType& DoubleType::divide (FloatType& udt)
 {
-    return divide(*udt.value);
+    return divide(static_cast<double>(*udt.value));
 }
 
 
@@ -446,44 +446,44 @@ IntType& IntType::multiply(IntType& udt)
 /**/
 IntType& IntType::add (FloatType& udt)
 {
-    return add(*udt.value);
+    return add(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::subtract(FloatType& udt)
 {
-    return subtract(*udt.value);
+    return subtract(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::divide(FloatType& udt)
 {
-    return divide(*udt.value);
+    return divide(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::multiply(FloatType& udt)
 {
-    return multiply(*udt.value);
+    return multiply(static_cast<int>(*udt.value));
 }
 
 
 /**/
 IntType& IntType::add (DoubleType& udt)
 {
-    return add(*udt.value);
+    return add(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::subtract(DoubleType& udt)
 {
-    return subtract(*udt.value);
+    return subtract(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::divide(DoubleType& udt)
 {
-    return divide(*udt.value);
+    return divide(static_cast<int>(*udt.value));
 }
 
 IntType& IntType::multiply(DoubleType& udt)
 {
-    return multiply(*udt.value);
+    return multiply(static_cast<int>(*udt.value));
 }
 
 /*
@@ -518,7 +518,7 @@ int main()
     std::cout << "DoubleType add result=" << *dt.add(2.0).value << std::endl;
     std::cout << "DoubleType subtract result=" << *dt.subtract(2.0).value << std::endl;
     std::cout << "DoubleType multiply result=" << *dt.multiply(2.0).value << std::endl;
-    std::cout << "DoubleType divide result=" << *dt.divide(5.f).value << std::endl << std::endl;
+    std::cout << "DoubleType divide result=" << *dt.divide(5).value << std::endl << std::endl;
     
     std::cout << "IntType add result=" << *it.add(2).value << std::endl;
     std::cout << "IntType subtract result=" << *it.subtract(2).value << std::endl;
@@ -540,7 +540,7 @@ int main()
     std::cout << "Initial value of it: " << *it.value << std::endl;
     // --------
     std::cout << "Use of function concatenation (mixed type arguments) " << std::endl;
-    std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << *dt.multiply(*it.value).divide(5.0f).add(*ft.value).value << std::endl;
+    std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << *dt.multiply(*it.value).divide(5.0).add(*ft.value).value << std::endl;
 
 
     std::cout << "---------------------\n" << std::endl; 
