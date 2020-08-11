@@ -10,11 +10,11 @@
     Build/Run often with this task to make sure you're not breaking the code with each step.
     I recommend committing after you get each step working so you can revert to a working version easily if needed.
 
- 1) remove your functions that accepted a User-Defined Type
+ // 1) remove your functions that accepted a User-Defined Type
  
- 2) remove any getValue() functions if you added them
+ // 2) remove any getValue() functions if you added them
  
- 3) move all of your add/subtract/multiply/divide implementations out of the class.
+ // 3) move all of your add/subtract/multiply/divide implementations out of the class.
   
  4) add user-defined conversion functions that convert to the numeric type your object holds.
         i.e. if your type holds an int, you'll need an operator int() function.
@@ -130,182 +130,9 @@ struct HeapA
 
  
 #include <iostream>
-
-struct IntType;
-struct DoubleType;
-
-struct FloatType
-{
-    float* value;
-
-    FloatType(float value_) : value(new float(value_)){}
-    ~FloatType()
-    {
-        delete value;
-        value = nullptr;
-    }
-
-
-    FloatType& add( float rhs );
-    FloatType& subtract( float rhs );
-    FloatType& multiply( float rhs );
-    FloatType& divide(  float rhs );
-
-};
-
-
-
-
-struct DoubleType
-{
-    double* value;
-
-    DoubleType(double value_) : value(new double(value_)){}
-
-    ~DoubleType() 
-    {
-        delete value;
-        value = nullptr;
-    }
-
-    DoubleType& add( double rhs );
-    DoubleType& subtract( double rhs );
-    DoubleType& multiply( double rhs );
-    DoubleType& divide( double rhs );
-
-};
-
-
-
-
-struct IntType
-{
-    int* value;
-
-    IntType(int value_) : value(new int(value_)){}
-
-    ~IntType() 
-    {
-        delete value;
-        value = nullptr;
-    }
-
-
-    IntType& add( int rhs );
-    IntType& subtract( int rhs );
-    IntType& multiply( int rhs );
-    IntType& divide( int rhs );
-
-};
-
-
-
-
-
-
-
-
-
-
-
-
-/*Float Type Definitions*/
-/**/
-FloatType& FloatType::add (float rhs)
-{
-    *value += rhs;
-    return *this;
-}
-
-FloatType& FloatType::subtract (float rhs)
-{
-    *value -= rhs;
-    return *this;
-}
-
-FloatType& FloatType::multiply ( float rhs)
-{
-    *value = *value * rhs;
-    return *this;
-}
-
-FloatType& FloatType::divide ( float rhs)
-{
-    if  (std::abs(rhs) > 0) 
-    {
-        std::cout << "warning: floating point division by zero!" << std::endl;
-    }  
-    *value = *value / rhs;
-    return *this;
-}
-
-
-
-
-/*Double type Definitions*/
-/**/
-DoubleType& DoubleType::add ( double rhs)
-{
-    *value += rhs;
-    return *this;
-}
-
-DoubleType& DoubleType::subtract ( double rhs)
-{
-    *value -= rhs;
-    return *this;
-}
-
-DoubleType& DoubleType::multiply (  double rhs)
-{
-    *value = *value * rhs;
-    return *this;
-}
-
-DoubleType& DoubleType::divide ( double rhs)
-{
-    if (std::abs(rhs) == 0.)
-    {
-        std::cout << "warning: floating point division by zero!"<< std::endl;
-    } 
-    *value = *value / rhs;
-    return *this;
-}
-
-
-
-/*IntType Definitions*/
-/**/
-IntType& IntType::add ( int rhs)
-{
-    *value += rhs;
-    return *this;
-}
-
-IntType& IntType::subtract ( int rhs)
-{
-    *value -= rhs;
-    return *this;
-}
-
-IntType& IntType::multiply ( int rhs)
-{
-    *value = *value * rhs;
-    return *this;
-}
-
-IntType& IntType::divide ( int rhs)
-{
-    if (rhs == 0)
-    {
-        std::cout << "error: integer division by zero is an error and will crash the program!" << std::endl; 
-    }
-    else
-    {
-        *value = *value / rhs;
-    }  
-    return *this;
-}
+#include "IntType.h"
+#include "FloatType.h"
+#include "DoubleType.h"
 
 
 
