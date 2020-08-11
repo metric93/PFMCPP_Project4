@@ -20,7 +20,7 @@ FloatType& FloatType::multiply ( float rhs)
 
 FloatType& FloatType::divide ( float rhs)
 {
-    if  (static_cast<int>(std::abs(rhs)) == 0) 
+    if  (std::abs(rhs) == 0.f) 
     {
         std::cout << "warning: floating point division by zero!" << std::endl;
     }  
