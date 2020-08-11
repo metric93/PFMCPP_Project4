@@ -1,18 +1,13 @@
 #pragma once
 #include <iostream>
 
-struct IntType;
-struct DoubleType;
-
 struct FloatType
 {
-    float* value;
-
-    FloatType(float value_) : value(new float(value_)){}
+    FloatType(float floatPtr_) : floatPtr(new float(floatPtr_)){}
     ~FloatType()
     {
-        delete value;
-        value = nullptr;
+        delete floatPtr;
+        floatPtr = nullptr;
     }
 
 
@@ -21,4 +16,8 @@ struct FloatType
     FloatType& multiply( float rhs );
     FloatType& divide(  float rhs );
 
+    operator float()  {return *floatPtr;}
+
+    private:
+        float* floatPtr;
 };

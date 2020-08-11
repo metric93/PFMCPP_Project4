@@ -1,20 +1,20 @@
-/*IntType Definitions*/
-/**/
+#include "IntType.h"
+
 IntType& IntType::add ( int rhs)
 {
-    *value += rhs;
+    *intPtr += rhs;
     return *this;
 }
 
 IntType& IntType::subtract ( int rhs)
 {
-    *value -= rhs;
+    *intPtr -= rhs;
     return *this;
 }
 
 IntType& IntType::multiply ( int rhs)
 {
-    *value = *value * rhs;
+    *intPtr = *intPtr * rhs;
     return *this;
 }
 
@@ -26,7 +26,7 @@ IntType& IntType::divide ( int rhs)
     }
     else
     {
-        *value = *value / rhs;
+        *intPtr = *intPtr / rhs;
     }  
     return *this;
 }

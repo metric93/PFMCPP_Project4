@@ -12,15 +12,15 @@
 
  // 1) remove your functions that accepted a User-Defined Type
  
- // 2) remove any getValue() functions if you added them
+ // 2) remove any ge() functions if you added them
  
  // 3) move all of your add/subtract/multiply/divide implementations out of the class.
   
- 4) add user-defined conversion functions that convert to the numeric type your object holds.
+ //4) add user-defined conversion functions that convert to the numeric type your object holds.
         i.e. if your type holds an int, you'll need an operator int() function.
  
- 5) make your member variable private.
-         this conversion function should be the ONLY WAY to access the held value.
+// 5) make your member variable private.
+         this conversion function should be the ONLY WAY to access the held.
          use the proper casting technique to invoke this conversion function
  
  6) clean up any forward declaration that you might have.
@@ -35,23 +35,6 @@
  10) click the [run] button.  Clear up any errors or warnings as best you can.
 
  */
-
-void part3()
-{
-    FloatType ft( 5.5f );
-    DoubleType dt( 11.1 );
-    IntType it ( 34 );
-    DoubleType pi( 3.14 );
-
-    std::cout << "The result of FloatType^4 divided by IntType is: " << ft.multiply( ft ).multiply( ft ).divide( it ) << std::endl;
-    std::cout << "The result of DoubleType times 3 plus IntType is : " << dt.multiply( 3 ).add( it ) << std::endl;
-    std::cout << "The result of IntType divided by 3.14 multiplied by DoubleType minus FloatType is: " << it.divide( pi ).multiply( dt ).subtract( ft ) << std::endl;
-    std::cout << "An operation followed by attempts to divide by 0, which are ignored and warns user: " << std::endl;
-    std::cout << it.multiply(it).divide(0).divide(0.0f).divide(0.0)<<std::endl;
-    
-    std::cout << "FloatType x IntType  =  " << it.multiply( ft ) << std::endl;
-    std::cout << "(IntType + DoubleType + FloatType) x 24 = " << it.add( dt ).add( ft ).multiply( 24 ) << std::endl;
-}
 
 /*
 your program should generate the following output.   The output should have zero warnings.
@@ -73,21 +56,21 @@ IntType multiply result=4
 IntType divide result=1
 
 Chain calculation = 590
-New value of ft = (ft + 3.0f) * 1.5f / 5.0f = 0.975
+New of ft = (ft + 3.0f) * 1.5f / 5.0f = 0.975
 ---------------------
 
-Initial value of dt: 0.8
-Initial value of it: 590
+Initial of dt: 0.8
+Initial of it: 590
 Use of function concatenation (mixed type arguments) 
-New value of dt = (dt * it) / 5.0f + ft = 95.375
+New of dt = (dt * it) / 5.0f + ft = 95.375
 ---------------------
 
 Intercept division by 0 
-New value of it = it / 0 = error: integer division by zero is an error and will crash the program!
+New of it = it / 0 = error: integer division by zero is an error and will crash the program!
 590
-New value of ft = ft / 0 = warning: floating point division by zero!
+New of ft = ft / 0 = warning: floating point division by zero!
 inf
-New value of dt = dt / 0 = warning: floating point division by zero!
+New of dt = dt / 0 = warning: floating point division by zero!
 inf
 ---------------------
 
@@ -135,7 +118,22 @@ struct HeapA
 #include "DoubleType.h"
 
 
+void part3()
+{
+    FloatType ft( 5.5f );
+    DoubleType dt( 11.1 );
+    IntType it ( 34 );
+    DoubleType pi( 3.14 );
 
+    std::cout << "The result of FloatType^4 divided by IntType is: " << ft.multiply( ft ).multiply( ft ).divide( it ) << std::endl;
+    std::cout << "The result of DoubleType times 3 plus IntType is : " << dt.multiply( 3 ).add( it ) << std::endl;
+    std::cout << "The result of IntType divided by 3.14 multiplied by DoubleType minus FloatType is: " << it.divide( static_cast<int>(pi) ).multiply( static_cast<int>(dt) ).subtract( static_cast<int>(ft) ) << std::endl;
+    std::cout << "An operation followed by attempts to divide by 0, which are ignored and warns user: " << std::endl;
+    std::cout << it.multiply(it).divide(0).divide(0.0f).divide(0.0)<<std::endl;
+    
+    std::cout << "FloatType x IntType  =  " << it.multiply( static_cast<int>(ft) ) << std::endl;
+    std::cout << "(IntType + DoubleType + FloatType) x 24 = " << it.add( static_cast<int>(dt) ).add( static_cast<int>(ft) ).multiply( 24 ) << std::endl;
+}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -160,37 +158,37 @@ int main()
     DoubleType dt ( 2 );
     IntType it ( 2 ) ;
 
-    std::cout << "FloatType add result=" << *ft.add( 2.0f ).value << std::endl;
-    std::cout << "FloatType subtract result=" << *ft.subtract( 2.0f ).value << std::endl;
-    std::cout << "FloatType multiply result=" << *ft.multiply( 2.0f ).value << std::endl;
-    std::cout << "FloatType divide result=" << *ft.divide( 16.0f).value << std::endl << std::endl;
+    std::cout << "FloatType add result=" << ft.add( 2.0f ) << std::endl;
+    std::cout << "FloatType subtract result=" << ft.subtract( 2.0f ) << std::endl;
+    std::cout << "FloatType multiply result=" << ft.multiply( 2.0f ) << std::endl;
+    std::cout << "FloatType divide result=" << ft.divide( 16.0f) << std::endl << std::endl;
     
-    std::cout << "DoubleType add result=" << *dt.add(2.0).value << std::endl;
-    std::cout << "DoubleType subtract result=" << *dt.subtract(2.0).value << std::endl;
-    std::cout << "DoubleType multiply result=" << *dt.multiply(2.0).value << std::endl;
-    std::cout << "DoubleType divide result=" << *dt.divide(5).value << std::endl << std::endl;
+    std::cout << "DoubleType add result=" << dt.add(2.0) << std::endl;
+    std::cout << "DoubleType subtract result=" << dt.subtract(2.0) << std::endl;
+    std::cout << "DoubleType multiply result=" << dt.multiply(2.0) << std::endl;
+    std::cout << "DoubleType divide result=" << dt.divide(5) << std::endl << std::endl;
     
-    std::cout << "IntType add result=" << *it.add(2).value << std::endl;
-    std::cout << "IntType subtract result=" << *it.subtract(2).value << std::endl;
-    std::cout << "IntType multiply result=" << *it.multiply(2).value << std::endl;
-    std::cout << "IntType divide result=" << *it.divide(3).value << std::endl << std::endl;
-    std::cout << "Chain calculation = " << *it.multiply(1000).divide(2).subtract(10).add(100).value << std::endl;
+    std::cout << "IntType add result=" << it.add(2) << std::endl;
+    std::cout << "IntType subtract result=" << it.subtract(2) << std::endl;
+    std::cout << "IntType multiply result=" << it.multiply(2) << std::endl;
+    std::cout << "IntType divide result=" << it.divide(3) << std::endl << std::endl;
+    std::cout << "Chain calculation = " << it.multiply(1000).divide(2).subtract(10).add(100) << std::endl;
 
     
         // FloatType object instanciation and method tests
     // --------
-    std::cout << "New value of ft = (ft + 3.0f) * 1.5f / 5.0f = " << *ft.add( 3.0f ).multiply(1.5f).divide(5.0f).value << 
+    std::cout << "New of ft = (ft + 3.0f) * 1.5f / 5.0f = " << ft.add( 3.0f ).multiply(1.5f).divide(5.0f) << 
     std::endl;                                                      
        
     std::cout << "---------------------\n" << std::endl; 
     
     // DoubleType/IntType object instanciation and method tests
     // --------
-    std::cout << "Initial value of dt: " << *dt.value << std::endl;
-    std::cout << "Initial value of it: " << *it.value << std::endl;
+    std::cout << "Initial of dt: " << dt << std::endl;
+    std::cout << "Initial of it: " << it << std::endl;
     // --------
     std::cout << "Use of function concatenation (mixed type arguments) " << std::endl;
-    std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << *dt.multiply(*it.value).divide(5.0).add(*ft.value).value << std::endl;
+    std::cout << "New of dt = (dt * it) / 5.0f + ft = " << dt.multiply(it).divide(5.0).add(static_cast<double>(ft)) << std::endl;
 
 
     std::cout << "---------------------\n" << std::endl; 
@@ -198,11 +196,16 @@ int main()
     // Intercept division by 0
     // --------
     std::cout << "Intercept division by 0 " << std::endl;
-    std::cout << "New value of it = it / 0 = " << *it.divide(0).value << std::endl;
-    std::cout << "New value of ft = ft / 0 = " << *ft.divide(0).value << std::endl;
-    std::cout << "New value of dt = dt / 0 = " << *dt.divide(0).value << std::endl;
+    std::cout << "New of it = it / 0 = " << it.divide(0) << std::endl;
+    std::cout << "New of ft = ft / 0 = " << ft.divide(0) << std::endl;
+    std::cout << "New of dt = dt / 0 = " << dt.divide(0) << std::endl;
 
     std::cout << "---------------------\n" << std::endl; 
+
+
+    part3();
+
+
 
     std::cout << "good to go!\n";
 

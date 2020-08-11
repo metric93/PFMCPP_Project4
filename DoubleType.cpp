@@ -1,20 +1,20 @@
-/*Double type Definitions*/
-/**/
+#include "DoubleType.h"
+
 DoubleType& DoubleType::add ( double rhs)
 {
-    *value += rhs;
+    *doublePtr += rhs;
     return *this;
 }
 
 DoubleType& DoubleType::subtract ( double rhs)
 {
-    *value -= rhs;
+    *doublePtr -= rhs;
     return *this;
 }
 
 DoubleType& DoubleType::multiply (  double rhs)
 {
-    *value = *value * rhs;
+    *doublePtr = *doublePtr * rhs;
     return *this;
 }
 
@@ -24,6 +24,6 @@ DoubleType& DoubleType::divide ( double rhs)
     {
         std::cout << "warning: floating point division by zero!"<< std::endl;
     } 
-    *value = *value / rhs;
+    *doublePtr = *doublePtr / rhs;
     return *this;
 }

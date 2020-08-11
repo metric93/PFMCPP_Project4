@@ -1,13 +1,14 @@
+#pragma once
+#include <iostream>
+
 struct IntType
 {
-    int* value;
-
-    IntType(int value_) : value(new int(value_)){}
+    IntType(int intPtr_) : intPtr(new int(intPtr_)){}
 
     ~IntType() 
     {
-        delete value;
-        value = nullptr;
+        delete intPtr;
+        intPtr = nullptr;
     }
 
 
@@ -16,4 +17,8 @@ struct IntType
     IntType& multiply( int rhs );
     IntType& divide( int rhs );
 
+    operator int()  {return *intPtr;}
+
+    private:
+        int* intPtr;
 };

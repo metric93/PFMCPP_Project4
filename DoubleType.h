@@ -1,13 +1,17 @@
+#pragma once
+#include <iostream>
+
+
 struct DoubleType
 {
-    double* value;
+    
 
-    DoubleType(double value_) : value(new double(value_)){}
+    DoubleType(double doublePtr_) : doublePtr(new double(doublePtr_)){}
 
     ~DoubleType() 
     {
-        delete value;
-        value = nullptr;
+        delete doublePtr;
+        doublePtr = nullptr;
     }
 
     DoubleType& add( double rhs );
@@ -15,4 +19,9 @@ struct DoubleType
     DoubleType& multiply( double rhs );
     DoubleType& divide( double rhs );
 
+
+    operator double() {return *doublePtr;}
+
+    private:
+        double* doublePtr;
 };
