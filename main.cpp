@@ -5,7 +5,7 @@
 
  Create a branch named Part3
  
- do not remove anything from main().  you'll be revising your main() to work with these new code changes.
+ Do not remove anything from main().  you'll be revising your main() to work with these new code changes.
  
     Build/Run often with this task to make sure you're not breaking the code with each step.
     I recommend committing after you get each step working so you can revert to a working version easily if needed.
