@@ -5,7 +5,7 @@
 
  Create a branch named Part3
  
- Do not remove anything from main().  you'll be revising your main() to work with these new code changes.
+ do not remove anything from main().  you'll be revising your main() to work with these new code changes.
  
     Build/Run often with this task to make sure you're not breaking the code with each step.
     I recommend committing after you get each step working so you can revert to a working version easily if needed.
@@ -151,20 +151,6 @@ struct FloatType
     FloatType& multiply( float rhs );
     FloatType& divide(  float rhs );
 
-    FloatType& add( FloatType& udt);
-    FloatType& subtract( FloatType& udt);
-    FloatType& multiply( FloatType& udt);
-    FloatType& divide( FloatType& udt);
-
-    FloatType& add( IntType& udt);
-    FloatType& subtract( IntType& udt);
-    FloatType& multiply( IntType& udt);
-    FloatType& divide( IntType& udt);
-
-    FloatType& add( DoubleType& udt);
-    FloatType& subtract( DoubleType& udt);
-    FloatType& multiply( DoubleType& udt);
-    FloatType& divide( DoubleType& udt);
 };
 
 
@@ -187,20 +173,6 @@ struct DoubleType
     DoubleType& multiply( double rhs );
     DoubleType& divide( double rhs );
 
-    DoubleType& add( DoubleType& udt);
-    DoubleType& subtract( DoubleType& udt);
-    DoubleType& multiply( DoubleType& udt);
-    DoubleType& divide( DoubleType& udt);
-
-    DoubleType& add( IntType& udt);
-    DoubleType& subtract( IntType& udt);
-    DoubleType& multiply( IntType& udt);
-    DoubleType& divide( IntType& udt);
-
-    DoubleType& add( FloatType& udt);
-    DoubleType& subtract( FloatType& udt);
-    DoubleType& multiply( FloatType& udt);
-    DoubleType& divide( FloatType& udt);
 };
 
 
@@ -224,20 +196,6 @@ struct IntType
     IntType& multiply( int rhs );
     IntType& divide( int rhs );
 
-    IntType& add(IntType& udt);
-    IntType& subtract(IntType& udt);
-    IntType& multiply(IntType& udt);
-    IntType& divide(IntType& udt);
-
-    IntType& add(DoubleType& udt);
-    IntType& subtract(DoubleType& udt);
-    IntType& multiply(DoubleType& udt);
-    IntType& divide(DoubleType& udt);
-
-    IntType& add(FloatType& udt);
-    IntType& subtract(FloatType& udt);
-    IntType& multiply(FloatType& udt);
-    IntType& divide(FloatType& udt);
 };
 
 
@@ -282,69 +240,6 @@ FloatType& FloatType::divide ( float rhs)
 }
 
 
-/**/
-FloatType& FloatType::add (FloatType& udt)
-{
-    return add(*udt.value);
-}
-
-FloatType& FloatType::subtract (FloatType& udt)
-{
-    return subtract(*udt.value);
-}
-
-FloatType& FloatType::multiply (FloatType& udt)
-{
-    return multiply(*udt.value);
-}
-
-FloatType& FloatType::divide (FloatType& udt)
-{
-    return divide(*udt.value);
-}
-
-/**/
-FloatType& FloatType::add (IntType& udt)
-{
-    return add(*udt.value);
-}
-
-FloatType& FloatType::subtract (IntType& udt)
-{
-    return subtract(*udt.value);
-}
-
-FloatType& FloatType::multiply (IntType& udt)
-{
-    return multiply(*udt.value);
-}
-
-FloatType& FloatType::divide (IntType& udt)
-{
-    return divide(*udt.value);
-}
-
-/**/
-FloatType& FloatType::add (DoubleType& udt)
-{
-    return add(static_cast<float>(*udt.value));
-}
-
-FloatType& FloatType::subtract (DoubleType& udt)
-{
-    return subtract(static_cast<float>(*udt.value));
-}
-
-FloatType& FloatType::multiply (DoubleType& udt)
-{
-    return multiply(static_cast<float>(*udt.value));
-}
-
-FloatType& FloatType::divide (DoubleType& udt)
-{
-    return divide(static_cast<float>(*udt.value));
-}
-
 
 
 /*Double type Definitions*/
@@ -376,72 +271,6 @@ DoubleType& DoubleType::divide ( double rhs)
     *value = *value / rhs;
     return *this;
 }
-
-/**/
-DoubleType& DoubleType::add(DoubleType& udt)
-{
-    return add(*udt.value);
-}
-
-DoubleType& DoubleType::subtract(DoubleType& udt)
-{
-    return subtract(*udt.value);
-}
-
-DoubleType& DoubleType::multiply (DoubleType& udt)
-{
-    return multiply(*udt.value);
-}
-
-DoubleType& DoubleType::divide (DoubleType& udt)
-{
-    return divide(*udt.value);
-}
-
-/**/
-DoubleType& DoubleType::add(IntType& udt)
-{
-    return add(*udt.value);
-}
-
-DoubleType& DoubleType::subtract(IntType& udt)
-{
-    return subtract(*udt.value);
-}
-
-DoubleType& DoubleType::multiply (IntType& udt)
-{
-    return multiply(*udt.value);
-}
-
-DoubleType& DoubleType::divide (IntType& udt)
-{
-    return divide(*udt.value);
-}
-
-/**/
-DoubleType& DoubleType::add(FloatType& udt)
-{
-    return add(static_cast<double>(*udt.value));
-}
-
-DoubleType& DoubleType::subtract(FloatType& udt)
-{
-    return subtract(static_cast<double>(*udt.value));
-}
-
-DoubleType& DoubleType::multiply (FloatType& udt)
-{
-    return multiply(static_cast<double>(*udt.value));
-}
-
-DoubleType& DoubleType::divide (FloatType& udt)
-{
-    return divide(static_cast<double>(*udt.value));
-}
-
-
-
 
 
 
@@ -479,70 +308,6 @@ IntType& IntType::divide ( int rhs)
 }
 
 
-/**/
-IntType& IntType::add (IntType& udt)
-{
-    return add(*udt.value);
-}
-
-IntType& IntType::subtract(IntType& udt)
-{
-    return subtract(*udt.value);
-}
-
-IntType& IntType::divide(IntType& udt)
-{
-    return divide(*udt.value);
-}
-
-IntType& IntType::multiply(IntType& udt)
-{
-    return multiply(*udt.value);
-}
-
-
-/**/
-IntType& IntType::add (FloatType& udt)
-{
-    return add(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::subtract(FloatType& udt)
-{
-    return subtract(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::divide(FloatType& udt)
-{
-    return divide(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::multiply(FloatType& udt)
-{
-    return multiply(static_cast<int>(*udt.value));
-}
-
-
-/**/
-IntType& IntType::add (DoubleType& udt)
-{
-    return add(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::subtract(DoubleType& udt)
-{
-    return subtract(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::divide(DoubleType& udt)
-{
-    return divide(static_cast<int>(*udt.value));
-}
-
-IntType& IntType::multiply(DoubleType& udt)
-{
-    return multiply(static_cast<int>(*udt.value));
-}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
