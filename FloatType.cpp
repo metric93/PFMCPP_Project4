@@ -1,4 +1,5 @@
 #include "FloatType.h"
+#include <cmath> 
 
 FloatType& FloatType::add (float rhs)
 {
@@ -26,4 +27,10 @@ FloatType& FloatType::divide ( float rhs)
     }  
     *floatPtr = *floatPtr / rhs;
     return *this;
+}
+
+FloatType& FloatType::powInternal(float f)
+{
+    *floatPtr =  static_cast<float>( std::pow(*floatPtr, f) ); 
+    return *this; 
 }

@@ -17,8 +17,15 @@ struct IntType
     IntType& multiply( int rhs );
     IntType& divide( int rhs );
 
+    IntType& pow(const IntType& i);
+    IntType& pow(const FloatType& f);
+    IntType& pow(const DoubleType& d);
+    IntType& pow(int i);
+
     operator int()  {return *intPtr;}
 
     private:
         int* intPtr;
+        IntType& powInternal(int i);
+
 };

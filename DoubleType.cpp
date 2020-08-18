@@ -1,4 +1,5 @@
 #include "DoubleType.h"
+#include <cmath> 
 
 DoubleType& DoubleType::add ( double rhs)
 {
@@ -26,4 +27,15 @@ DoubleType& DoubleType::divide ( double rhs)
     } 
     *doublePtr = *doublePtr / rhs;
     return *this;
+}
+
+DoubleType& DoubleType::powInternal(double d)
+{
+    *doublePtr =  static_cast<double>( std::pow(*doublePtr, d) ); 
+    return *this; 
+}
+
+DoubleType& DoubleType::pow(const DoubleType& d)
+{
+    return powInternal(static_cast<double>(d));
 }

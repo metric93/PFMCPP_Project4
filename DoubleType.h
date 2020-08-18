@@ -19,9 +19,15 @@ struct DoubleType
     DoubleType& multiply( double rhs );
     DoubleType& divide( double rhs );
 
+    DoubleType& pow(const IntType& i);
+    DoubleType& pow(const FloatType& f);
+    DoubleType& pow(const DoubleType& d);
+    DoubleType& pow(double d);
+
 
     operator double() {return *doublePtr;}
 
     private:
         double* doublePtr;
+        DoubleType& powInternal(double d);
 };

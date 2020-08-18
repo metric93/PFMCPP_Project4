@@ -1,4 +1,5 @@
 #include "IntType.h"
+#include <cmath> 
 
 IntType& IntType::add ( int rhs)
 {
@@ -29,4 +30,10 @@ IntType& IntType::divide ( int rhs)
         *intPtr = *intPtr / rhs;
     }  
     return *this;
+}
+
+IntType& IntType::powInternal(int i)
+{
+    *intPtr =  static_cast<int>( std::pow(*intPtr, i) ); 
+    return *this; 
 }
