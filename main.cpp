@@ -46,6 +46,9 @@ Project 4: Part 4 / 9
  You will need to use Forward Declaration and out-of-class definitions to complete this.
  */
 
+#include "IntType.h"
+#include "FloatType.h"
+#include "DoubleType.h"
 
 
 struct Point

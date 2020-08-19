@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 
+struct FloatType;
+struct DoubleType;
+
 struct IntType
 {
     IntType(int intPtr_) : intPtr(new int(intPtr_)){}
@@ -22,7 +25,10 @@ struct IntType
     IntType& pow(const DoubleType& d);
     IntType& pow(int i);
 
+    //Operators for Static Conversion
+    //Const objects can only call their const member functions
     operator int()  {return *intPtr;}
+    operator int() const {return *intPtr;}
 
     private:
         int* intPtr;
