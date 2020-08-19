@@ -53,15 +53,67 @@ Project 4: Part 4 / 9
 
 struct Point
 {
+    Point(DoubleType& x_, DoubleType& y_);
+    Point(IntType& x_, IntType& y_);
+    Point(FloatType& x_, FloatType& y_);
+    Point(float x_, float y_) : x { x_} , y { y_} {}
+
     Point& multiply(float m)
     {
         x *= m;
         y *= m;
         return *this;
     }
+
+    Point& multiply(DoubleType& m)
+    {
+        x *= static_cast<float>(m);
+        y *= static_cast<float>(m);
+        return *this;
+    }
+
+    Point& multiply(IntType& m)
+    {
+        x *= m;
+        y *= m;
+        return *this;
+    }
+
+    Point& multiply(FloatType& m)
+    {
+        x *= m;
+        y *= m;
+        return *this;
+    }
+
+    void toString()
+    {
+        std::cout << "{ x: " << this->x << ", y: " << this->y << " }" << std::endl;
+    }
+
+
 private:
     float x{0}, y{0};
 };
+
+
+Point::Point(DoubleType& x_, DoubleType& y_)
+{
+    x = static_cast<float>(x_);
+    y = static_cast<float>(y_);
+}
+
+Point::Point(FloatType& x_, FloatType& y_)
+{
+    x = x_;
+    y = y_;
+}
+
+Point::Point(IntType& x_, IntType& y_)
+{
+    x = x_;
+    y = y_;
+}
 
 void part4()
 {
@@ -360,6 +412,7 @@ int main()
 
 
     part3();
+    part4();
 
 
 
