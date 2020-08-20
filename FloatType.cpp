@@ -1,5 +1,6 @@
 #include "FloatType.h"
 #include <cmath> 
+#include <iostream>
 
 //These Includes are so the operators are avaiable
 #include "IntType.h"
