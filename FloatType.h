@@ -26,7 +26,6 @@ struct FloatType
 
     //Operators for Static Conversion
     //Const objects can only call their const member functions
-    operator float()  {return *floatPtr;}
     operator float() const  {return *floatPtr;}
 
     private:

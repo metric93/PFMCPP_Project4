@@ -53,9 +53,9 @@ Project 4: Part 4 / 9
 
 struct Point
 {
-    Point(DoubleType& x_, DoubleType& y_);
-    Point(IntType& x_, IntType& y_);
-    Point(FloatType& x_, FloatType& y_);
+    Point(const DoubleType& x_, const DoubleType& y_);
+    Point(const IntType& x_, const IntType& y_);
+    Point(const FloatType& x_, const FloatType& y_);
     Point(float x_, float y_) : x { x_} , y { y_} {}
 
     Point& multiply(float m)
@@ -65,25 +65,19 @@ struct Point
         return *this;
     }
 
-    Point& multiply(DoubleType& m)
+    Point& multiply(const DoubleType& m)
     {
-        x *= static_cast<float>(m);
-        y *= static_cast<float>(m);
-        return *this;
+        return multiply(static_cast<float>(m));
     }
 
-    Point& multiply(IntType& m)
+    Point& multiply (const IntType& m)
     {
-        x *= m;
-        y *= m;
-        return *this;
+        return multiply(static_cast<float>(m));
     }
 
-    Point& multiply(FloatType& m)
+    Point& multiply(const FloatType& m)
     {
-        x *= m;
-        y *= m;
-        return *this;
+        return multiply(static_cast<float>(m));
     }
 
     void toString()
@@ -97,19 +91,19 @@ private:
 };
 
 
-Point::Point(DoubleType& x_, DoubleType& y_)
+Point::Point(const DoubleType& x_, const DoubleType& y_)
 {
     x = static_cast<float>(x_);
     y = static_cast<float>(y_);
 }
 
-Point::Point(FloatType& x_, FloatType& y_)
+Point::Point(const FloatType& x_, const FloatType& y_)
 {
     x = x_;
     y = y_;
 }
 
-Point::Point(IntType& x_, IntType& y_)
+Point::Point(const IntType& x_, const IntType& y_)
 {
     x = x_;
     y = y_;

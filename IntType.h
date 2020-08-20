@@ -27,7 +27,6 @@ struct IntType
 
     //Operators for Static Conversion
     //Const objects can only call their const member functions
-    operator int()  {return *intPtr;}
     operator int() const {return *intPtr;}
 
     private:

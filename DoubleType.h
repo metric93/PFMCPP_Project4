@@ -28,7 +28,6 @@ struct DoubleType
 
     //Operators for Static Conversion
     //Const objects can only call their const member functions
-    operator double() {return *doublePtr;} 
     operator double() const {return *doublePtr;} 
 
     private:
