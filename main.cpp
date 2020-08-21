@@ -54,9 +54,10 @@ Project 4: Part 4 / 9
 
 struct Point
 {
-    Point(const DoubleType& x_, const DoubleType& y_) : x {static_cast<float>(x_)}, y {static_cast<float>(y_)}{}
-    Point(const IntType& x_, const IntType& y_) :       x {static_cast<float>(x_)}, y {static_cast<float>(y_)}{}
-    Point(const FloatType& x_, const FloatType& y_) :   x {static_cast<float>(x_)}, y {static_cast<float>(y_)}{}
+    Point(float x_, float y_) : x {x_},y{y_}{}
+    Point(const DoubleType& x_, const DoubleType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){}
+    Point(const IntType& x_, const IntType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){};
+    Point(const FloatType& x_, const FloatType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){};
     
 
     Point& multiply(float m)
