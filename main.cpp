@@ -46,19 +46,53 @@ Project 4: Part 4 / 9
  You will need to use Forward Declaration and out-of-class definitions to complete this.
  */
 
+#include "IntType.h"
+#include "FloatType.h"
+#include "DoubleType.h"
+#include <iostream>
 
 
 struct Point
 {
+    Point(float x_, float y_) : x {x_},y{y_}{}
+    Point(const DoubleType& x_, const DoubleType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){}
+    Point(const IntType& x_, const IntType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){}
+    Point(const FloatType& x_, const FloatType& y_) : Point (static_cast<float>(x_), static_cast<float>(y_)){}
+    
+
     Point& multiply(float m)
     {
         x *= m;
         y *= m;
         return *this;
     }
+
+    Point& multiply(const DoubleType& m)
+    {
+        return multiply(static_cast<float>(m));
+    }
+
+    Point& multiply (const IntType& m)
+    {
+        return multiply(static_cast<float>(m));
+    }
+
+    Point& multiply(const FloatType& m)
+    {
+        return multiply(static_cast<float>(m));
+    }
+
+    void toString()
+    {
+        std::cout << "Point { x: " << this->x << ", y: " << this->y << " }" << std::endl;
+    }
+
+
 private:
     float x{0}, y{0};
 };
+
+
 
 void part4()
 {
@@ -109,7 +143,7 @@ void part4()
 
     // Point tests with float
     std::cout << "Point tests with float argument:" << std::endl;
-    Point p0(ft2, floatMul);
+    Point p0(ft2,  FloatType {floatMul});
     p0.toString();   
     std::cout << "Multiplication factor: " << floatMul << std::endl;
     p0.multiply(floatMul); 
@@ -127,7 +161,7 @@ void part4()
 
     // Point tests with DoubleType
     std::cout << "Point tests with DoubleType argument:" << std::endl;
-    Point p2(ft2, static_cast<float>(dt2));
+    Point p2(static_cast<float>(ft2), static_cast<float>(dt2));
     p2.toString();   
     std::cout << "Multiplication factor: " << dt2 << std::endl;
     p2.multiply(dt2); 
@@ -136,7 +170,7 @@ void part4()
 
     // Point tests with IntType
     std::cout << "Point tests with IntType argument:" << std::endl;
-    Point p3(ft2, static_cast<float>(dt2));
+    Point p3(static_cast<float>(ft2), static_cast<float>(dt2));
     p3.toString();   
     std::cout << "Multiplication factor: " << it2 << std::endl;
     p3.multiply(it2); 
@@ -278,7 +312,7 @@ void part3()
     IntType it ( 34 );
     DoubleType pi( 3.14 );
 
-    std::cout << "The result of FloatType^4 divided by IntType is: " << ft.multiply( ft ).multiply( ft ).divide( it ) << std::endl;
+    std::cout << "The result of FloatType^3 divided by IntType is: " << ft.multiply( ft ).multiply( ft ).divide( it ) << std::endl;
     std::cout << "The result of DoubleType times 3 plus IntType is : " << dt.multiply( 3 ).add( it ) << std::endl;
     std::cout << "The result of IntType divided by 3.14 multiplied by DoubleType minus FloatType is: " << it.divide( static_cast<int>(pi) ).multiply( static_cast<int>(dt) ).subtract( static_cast<int>(ft) ) << std::endl;
     std::cout << "An operation followed by attempts to divide by 0, which are ignored and warns user: " << std::endl;
@@ -330,18 +364,18 @@ int main()
     
         // FloatType object instanciation and method tests
     // --------
-    std::cout << "New of ft = (ft + 3.0f) * 1.5f / 5.0f = " << ft.add( 3.0f ).multiply(1.5f).divide(5.0f) << 
+    std::cout << "New value of ft = (ft + 3.0f) * 1.5f / 5.0f = " << ft.add( 3.0f ).multiply(1.5f).divide(5.0f) << 
     std::endl;                                                      
        
     std::cout << "---------------------\n" << std::endl; 
     
     // DoubleType/IntType object instanciation and method tests
     // --------
-    std::cout << "Initial of dt: " << dt << std::endl;
-    std::cout << "Initial of it: " << it << std::endl;
+    std::cout << "Initial value of dt: " << dt << std::endl;
+    std::cout << "Initial value of it: " << it << std::endl;
     // --------
     std::cout << "Use of function concatenation (mixed type arguments) " << std::endl;
-    std::cout << "New of dt = (dt * it) / 5.0f + ft = " << dt.multiply(it).divide(5.0).add(static_cast<double>(ft)) << std::endl;
+    std::cout << "New value of dt = (dt * it) / 5.0f + ft = " << dt.multiply(it).divide(5.0).add(static_cast<double>(ft)) << std::endl;
 
 
     std::cout << "---------------------\n" << std::endl; 
@@ -349,14 +383,15 @@ int main()
     // Intercept division by 0
     // --------
     std::cout << "Intercept division by 0 " << std::endl;
-    std::cout << "New of it = it / 0 = " << it.divide(0) << std::endl;
-    std::cout << "New of ft = ft / 0 = " << ft.divide(0) << std::endl;
-    std::cout << "New of dt = dt / 0 = " << dt.divide(0) << std::endl;
+    std::cout << "New value of it = it / 0 = " << it.divide(0) << std::endl;
+    std::cout << "New value of ft = ft / 0 = " << ft.divide(0) << std::endl;
+    std::cout << "New value of dt = dt / 0 = " << dt.divide(0) << std::endl;
 
     std::cout << "---------------------\n" << std::endl; 
 
 
     part3();
+    part4();
 
 
 

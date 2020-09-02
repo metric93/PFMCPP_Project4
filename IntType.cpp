@@ -1,4 +1,10 @@
 #include "IntType.h"
+#include <cmath>
+#include <iostream>
+
+//These Includes are so the operators are avaiable
+#include "FloatType.h"
+#include "DoubleType.h"
 
 IntType& IntType::add ( int rhs)
 {
@@ -29,4 +35,30 @@ IntType& IntType::divide ( int rhs)
         *intPtr = *intPtr / rhs;
     }  
     return *this;
+}
+
+IntType& IntType::powInternal(int i)
+{
+    *intPtr =  static_cast<int>( std::pow(*intPtr, i) ); 
+    return *this; 
+}
+
+IntType& IntType::pow(const FloatType& f)
+{
+    return powInternal(static_cast<int>(f));
+}
+
+IntType& IntType::pow(const IntType& i)
+{
+    return powInternal(static_cast<int>(i));
+}
+
+IntType& IntType::pow(const DoubleType& d)
+{
+    return powInternal(static_cast<int>(d));
+}
+
+IntType& IntType::pow(int i)
+{
+    return powInternal(i);
 }

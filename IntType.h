@@ -1,5 +1,7 @@
 #pragma once
-#include <iostream>
+
+struct FloatType;
+struct DoubleType;
 
 struct IntType
 {
@@ -17,8 +19,17 @@ struct IntType
     IntType& multiply( int rhs );
     IntType& divide( int rhs );
 
-    operator int()  {return *intPtr;}
+    IntType& pow(const IntType& i);
+    IntType& pow(const FloatType& f);
+    IntType& pow(const DoubleType& d);
+    IntType& pow(int i);
+
+    //Operators for Static Conversion
+    //Const objects can only call their const member functions
+    operator int() const {return *intPtr;}
 
     private:
         int* intPtr;
+        IntType& powInternal(int i);
+
 };
